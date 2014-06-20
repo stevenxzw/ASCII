@@ -15,7 +15,7 @@ module.exports = function(grunt) {
       },
       main: {
         options: {
-            banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+            //banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
         },
         src: '<%= app.temp %>qq.js',
         dest: '<%= app.temp %>qq.min.js'
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
   
   grunt.registerTask('default', ['uglify']);
   
-  grunt.registerTask('gfqv5', ['uglify', 'ascii', 'copy:v5']);
-  grunt.registerTask('gfqv2', ['uglify', 'ascii', 'copy:v2']);
+  grunt.registerTask('v5', ['uglify', 'ascii', 'copy:v5']);
+  grunt.registerTask('v2', ['uglify', 'ascii', 'copy:v2']);
   
 };
