@@ -1,3 +1,4 @@
+
 $(function(){
     var jq  = jQuery, quin, ck = 'uky', jqgt = !!jq.cookie;
     if(jqgt) quin = jq.cookie(ck);

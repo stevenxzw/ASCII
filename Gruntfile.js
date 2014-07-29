@@ -71,6 +71,41 @@ module.exports = function(grunt) {
 		}
 	},
 	
+	gcf : {
+		options : {
+			src : '<%= app.temp %>/',
+			toSrc : './views/'
+		},
+		
+		read : {
+			src : '<%= app.temp %>',
+			dist : './views/'
+		}
+	},
+	
+
+		
+	connect: {
+      options: {
+			  port: 3000,
+			  hostname: 'localhost'
+      },
+      server: {
+        options: {
+          // keepalive: true,
+          base:'/'
+        }
+      }
+    },
+	
+	
+    //´ò¿ªä¯ÀÀÆ÷
+    open: {
+      server: {
+        url: 'http://localhost:3000'
+      }
+    },
+	
 	
 	watch: {
 	  gruntfile: {
@@ -82,9 +117,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('my-contrib-ascii');
-  
+    grunt.loadNpmTasks('my-gcf');
+  	grunt.loadNpmTasks( 'grunt-contrib-connect' );
+	  	//grunt.loadNpmTasks( 'connect-livereload')
+   	grunt.loadNpmTasks( 'grunt-open' );
 
-  
+  	grunt.registerTask('net', ['connect:server', 'open:server']);
   
   // Default task(s).
   grunt.registerTask('gfq', ['uglify', 'ascii', 'copy']);
@@ -93,5 +131,6 @@ module.exports = function(grunt) {
   
   grunt.registerTask('v5', ['uglify', 'ascii', 'copy:v5']);
   grunt.registerTask('v2', ['uglify', 'ascii', 'copy:v2']);
+  grunt.registerTask('testgcf', ['gcf:read']);
   
 };
